@@ -8,7 +8,8 @@ from src.routes.course import router as CourseRouter
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000",
+    "*",
+    # "http://localhost:5173",
 ]
 
 app.add_middleware(
@@ -27,3 +28,7 @@ app.include_router(CourseRouter, tags=["Course"], prefix="/course")
 @app.get("/", tags=["Root"])
 async def read_root():
     return {"message": "Welcome to this fantastic app!"}
+
+@app.get("/test", tags=["Root"])
+async def read_root():
+    return {"message": "Test to this fantastic app!"}
